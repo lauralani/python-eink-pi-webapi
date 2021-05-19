@@ -39,3 +39,8 @@ async def text_post():
     except Exception as e:
         logging.error(e);
         return { "error": e }
+
+@app.route("/text/clear", methods=["POST"])
+async def text_clear_post():
+    response = await clear_display()
+    return { "message": response }
