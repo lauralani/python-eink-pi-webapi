@@ -2,15 +2,15 @@
 # -*- coding:utf-8 -*-
 import sys
 import os
-libdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'lib')
+resdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'res')
 
-print(libdir)
+print(resdir)
 
-if os.path.exists(libdir):
-    sys.path.append(libdir)
+if os.path.exists(resdir):
+    sys.path.append(resdir)
 
 import logging
-from lib import epd2in13_V2
+from res import epd2in13_V2
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
@@ -20,17 +20,17 @@ logging.basicConfig(level=logging.DEBUG)
 try:
     logging.info("epd2in13_V2 Demo")
     
-    print(os.path.join(libdir, 'Font.ttc'))
+    print(os.path.join(resdir, 'Font.ttc'))
     epd = epd2in13_V2.EPD()
     logging.info("init and Clear")
     epd.init(epd.FULL_UPDATE)
     epd.Clear(0xFF)
 
-    logging.debug(os.path.join(libdir, 'Font.ttc'))
+    logging.debug(os.path.join(resdir, 'Font.ttc'))
 
     # Drawing on the image
-    font15 = ImageFont.truetype(os.path.join(libdir, 'Font.ttc'), 15)
-    font24 = ImageFont.truetype(os.path.join(libdir, 'Font.ttc'), 24)
+    font15 = ImageFont.truetype(os.path.join(resdir, 'Font.ttc'), 15)
+    font24 = ImageFont.truetype(os.path.join(resdir, 'Font.ttc'), 24)
     
     logging.info("1.Drawing on the image...")
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
@@ -54,7 +54,7 @@ try:
     
     # read bmp file 
     logging.info("2.read bmp file...")
-    image = Image.open(os.path.join(libdir, '2in13.bmp'))
+    image = Image.open(os.path.join(resdir, '2in13.bmp'))
     epd.display(epd.getbuffer(image))
     time.sleep(2)
     
@@ -62,7 +62,7 @@ try:
     logging.info("3.read bmp file on window...")
     # epd.Clear(0xFF)
     image1 = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
-    bmp = Image.open(os.path.join(libdir, '100x100.bmp'))
+    bmp = Image.open(os.path.join(resdir, '100x100.bmp'))
     image1.paste(bmp, (2,2))    
     epd.display(epd.getbuffer(image1))
     time.sleep(2)
