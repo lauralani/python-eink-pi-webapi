@@ -33,8 +33,6 @@ async def set_display_text( text, fontsize ):
     import os
     resdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'res')
 
-    print(resdir)
-
     if os.path.exists(resdir):
         sys.path.append(resdir)
 
@@ -47,7 +45,6 @@ async def set_display_text( text, fontsize ):
     try:
         logging.debug("epd2in13_V2 Demo")
         
-        print(os.path.join(resdir, 'Font.ttc'))
         epd = epd2in13_V2.EPD()
         logging.debug("init and Clear")
         epd.init(epd.FULL_UPDATE)
