@@ -35,8 +35,7 @@ async def text_post():
         logging.debug(f"font: {int(body['fontsize'])}")
 
         response = await set_display_text(body['text'], int(body['fontsize']))
+        return { "message": response }
     except Exception as e:
         logging.error(e);
-        return "error"
-
-    return "ok"
+        return { "error": e }
