@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-def clear_display():
+async def clear_display():
 
     import sys
     import os
@@ -11,8 +11,6 @@ def clear_display():
         sys.path.append(resdir)
     import logging
     from res import epd2in13_V2
-
-    logging.basicConfig(level=logging.DEBUG)
 
     try:
         epd = epd2in13_V2.EPD()
@@ -29,7 +27,7 @@ def clear_display():
         return "error"
 
 
-def set_display_text( text, fontsize ):
+async def set_display_text( text, fontsize ):
 
     import sys
     import os
@@ -45,8 +43,6 @@ def set_display_text( text, fontsize ):
     import time
     from PIL import Image,ImageDraw,ImageFont
     import traceback
-
-    logging.basicConfig(level=logging.DEBUG)
 
     try:
         logging.debug("epd2in13_V2 Demo")

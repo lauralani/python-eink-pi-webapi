@@ -14,9 +14,13 @@ logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
-def index_get():
-    temp = get_temp()
-    voltage = get_voltage()
+async def index_get():
+    try:
+        temp = get_temp()
+        voltage = get_voltage()
+    except:
+        temp = None
+        voltage = None
 
     return {
         "temperature": temp,
@@ -24,13 +28,13 @@ def index_get():
     }
 
 @app.route("/text", methods=["POST"])
-def text_post():
+async def text_post():
     body = request.get_json()
     try:
         logging.debug(f"text: {body['text']}")
         logging.debug(f"font: {int(body['fontsize'])}")
 
-        set_display_text(body['text'], int(body['fontsize']))
+        response = await set_display_text(body['text'], int(body['fontsize']))
     except Exception as e:
         logging.error(e);
         return "error"
