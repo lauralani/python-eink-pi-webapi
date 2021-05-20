@@ -12,7 +12,8 @@ Group=root
 # see http://0pointer.net/blog/dynamic-users-with-systemd.html
 RuntimeDirectory=gunicorn
 WorkingDirectory=/root/python-eink-pi-webapi
-ExecStart=/usr/bin/gunicorn -w 2 app:app
+ExecStartPre=/usr/bin/git pull
+ExecStart=/usr/local/bin/gunicorn -w 2 -b 0.0.0.0 app:app
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
 TimeoutStopSec=5
