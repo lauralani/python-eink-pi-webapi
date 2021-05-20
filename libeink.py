@@ -123,7 +123,7 @@ async def set_display_text( text, fontsize ):
         #epd.init(epd.FULL_UPDATE)
         #epd.Clear(0xFF)
         
-        logging.info("Goto Sleep...")
+        logging.debug("Goto Sleep...")
         epd.sleep()
         return "success"
             
