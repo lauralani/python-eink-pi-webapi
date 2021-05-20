@@ -50,14 +50,12 @@ async def set_display_text( text, fontsize ):
         epd.init(epd.FULL_UPDATE)
         epd.Clear(0xFF)
 
-        logging.debug(os.path.join(resdir, 'Font.ttc'))
-
         # Drawing on the image
         # font15 = ImageFont.truetype(os.path.join(resdir, 'Font.ttc'), 15)
         # font24 = ImageFont.truetype(os.path.join(resdir, 'Font.ttc'), 24)
         # font32 = ImageFont.truetype(os.path.join(resdir, 'Font.ttc'), 32)
 
-        font = ImageFont.truetype(os.path.join(resdir, 'Font.ttc'), fontsize)
+        font = ImageFont.truetype(os.path.join(resdir, 'CascadiaMono.ttf'), fontsize)
         
         logging.debug("drawing text")
         image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
