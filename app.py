@@ -8,6 +8,7 @@ from config import *
 from flask import Flask
 from flask import request
 from flask import jsonify
+from flask import send_file
 
 
 logging.basicConfig(level=loglevel)
@@ -70,6 +71,9 @@ async def text_post():
         logging.error(e)
         return {"error": str(e)}, 500
 
+@app.route("/text", methods=["GET"])
+async def text_get():
+    return send_file(".display.png", mimetype='image/png')
 
 @app.route("/text/clear", methods=["POST"])
 async def text_clear_post():
