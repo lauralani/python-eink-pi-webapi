@@ -57,7 +57,7 @@ async def set_display_text( text, fontsize ):
 
 
         image.save("./display.png", "PNG")
-        image.rotate(180)
+        image.transpose(Image.FLIP_TOP_BOTTOM)
         epd.display(epd.getbuffer(image))
         time.sleep(2)
 
