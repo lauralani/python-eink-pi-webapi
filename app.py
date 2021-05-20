@@ -73,7 +73,11 @@ async def text_post():
 
 @app.route("/text", methods=["GET"])
 async def text_get():
-    return send_file(".display.png", mimetype='image/png')
+    file = "./display.png"
+    if (os.path.isfile(file)):
+        return send_file(file, mimetype='image/png')
+    else:
+        return {"status": "not found" }, 404
 
 @app.route("/text/clear", methods=["POST"])
 async def text_clear_post():
