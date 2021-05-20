@@ -1,3 +1,5 @@
 # authentication key for public api
-
 apikey = "aaaaaa"
+
+# Log Level
+loglevel = logging.INFO
