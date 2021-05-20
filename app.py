@@ -10,7 +10,7 @@ from flask import request
 from flask import jsonify
 
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=loglevel)
 
 
 app = Flask(__name__)
