@@ -20,7 +20,7 @@ async def clear_display():
         
         logging.debug("Goto Sleep...")
         epd.sleep()
-        return "ok"
+        return "success"
             
     except Exception as e:
         logging.error(e)
@@ -125,7 +125,7 @@ async def set_display_text( text, fontsize ):
         
         logging.info("Goto Sleep...")
         epd.sleep()
-        return "ok"
+        return "success"
             
     except IOError as e:
         logging.error(e)
