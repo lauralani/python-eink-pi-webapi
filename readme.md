@@ -1,17 +1,24 @@
 # RPi eInk Flask Web API
-## dependencies
-python: >= 3.8
+## Visuals
+![Current Raspberry Pi Text][display]
 
+
+
+## Dependencies
+python: >= 3.8
 `pip3 install "flask[async]"`
 
 
-
-## config file
+## Config File
 
 `config.py` in the base repo folder:
 
 ```python
 # authentication key for public api
-
 apikey = "aaaaaa"
+
+# Log Level
+loglevel = logging.INFO
 ```
+
+[display]: https://a-pi-backend.lauka.app/text "Current Raspberry Pi Text"
